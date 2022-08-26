@@ -1,10 +1,20 @@
 from get_messages import return_messages
 from send_message import send_message
-from get_id_group import GET
+from yaml import load
+from yaml.loader import SafeLoader
 
+class auth:
+    with open('data.config', 'r') as f:
+        data = load(f, Loader=SafeLoader)
+        
+        api_id = data['API_ID']
+        api_hash = data['API_HASH']
 
 class bot:
-    def __init__(self, receiver, sender ):
+    def __init__(self, receiver, sender):
+        self.api_id = auth.api_id
+        self.api_hash = auth.api_hash
+        
         self.receiver = receiver
         self.sender = sender
 
@@ -12,8 +22,12 @@ class bot:
         while True:            
             last_message = [] #Store the last message received
             value = 0
+            receive = return_messages(api_id=self.api_id, api_hash=self.api_hash)
+            send_ = send_message(api_id=self.api_id, api_hash=self.api_hash)
+
+
             while True:
-                message = return_messages.get_all(group_link=self.receiver) #Get the message 
+                message = receive.get_all(group_link=self.sender) #Get the message 
                 try:
                     last_message.index(message) #This is used to avoid loop problems
                     value = 1
@@ -25,19 +39,18 @@ class bot:
                 if message != None:
                     if value == 0:
                         print('Menssagem recebida: ', message)
-                        send_message.send_to(message=message, group_link=self.sender)
+                        send_.send_to(message=message, group_link=self.receiver)
 
 
 
             
 
 if __name__ == '__main__':
-    group_id = {'receiver': -785419607, 'sender': -628462148}
+    bot(receiver=input('Digite o link do grupo que vai receber menssagens: '),
+        sender=input('Digite o link do grupo que vai enviar menssagens: '))._main_()
 
-    OBJ = bot(receiver=group_id['receiver'], sender=group_id['sender'])
-    OBJ._main_()
+
     
-        
 
 
 
