@@ -17,7 +17,7 @@ class send_message:
             with TelegramClient('login', self.api_id, self.api_hash) as client: #Create connection
                 entity=client.get_entity(group_link) #Get entity from the target group. It's required in telegram API
                 client.send_message(entity=entity,message=message) #Sent message to target gruoup
-                print('[*]MESSAGE {MESSAGE} SENT'.format(MESSAGE=message)) 
+                print('[*]MENSSAGEM {MESSAGE} ENVIADA'.format(MESSAGE=message)) 
 
 
         except Exception as e:
