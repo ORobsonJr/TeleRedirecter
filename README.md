@@ -29,7 +29,8 @@ Na pasta do projeto "TeleRedirecter" digite algo como:
 
 
 <h5>Solução para possível erro na instalação do yaml</h5>
-![Screenshot_2022-08-29_16-22-52](https://user-images.githubusercontent.com/109431368/187282657-9f8a943e-d717-4cbf-81fc-0d32a4d80644.png)
+<img src="https://user-images.githubusercontent.com/109431368/187282657-9f8a943e-d717-4cbf-81fc-0d32a4d80644.png"/>
+
 
 :heavy_check_mark: '$ sudo apt-get install python-yaml':
 :heavy_check_mark: '$ sudo yum install python-yaml':
