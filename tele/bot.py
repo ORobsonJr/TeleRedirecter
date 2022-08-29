@@ -4,7 +4,7 @@ from yaml import load
 from yaml.loader import SafeLoader
 
 class auth:
-    with open('data.config', 'r') as f:
+    with open('tele/data.yaml', 'r') as f:
         data = load(f, Loader=SafeLoader)
         
         api_id = data['API_ID']
@@ -46,8 +46,12 @@ class bot:
             
 
 if __name__ == '__main__':
-    bot(receiver=input('Digite o link do grupo que vai receber menssagens: '),
-        sender=input('Digite o link do grupo que vai enviar menssagens: '))._main_()
+    try:
+        bot(receiver=input('Digite o link do grupo que vai receber menssagens: '),
+            sender=input('Digite o link do grupo que vai enviar menssagens: '))._main_()
+    
+    except ValueError:
+        print('Por favor execute "python3 tele -c" primeiro')
 
 
     
